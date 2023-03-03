@@ -1,9 +1,8 @@
 window.addEventListener("load", function(){
     fetch("https://handlers.education.launchcode.org/static/astronauts.json").then(function(response){
-        response.json().then( function(json){
-            console.log(json);
+        response.json().then(function(json){
             for (let index = 0; index < json.length; index++) {
-            let container = document.getElementById("container");
+            const container = document.getElementById("container");
             container.innerHTML += `
                 <div class="astronaut">
                     <div class="bio">
@@ -11,7 +10,7 @@ window.addEventListener("load", function(){
                     <ul>
                         <li>Hours in space: ${json[index].hoursInSpace}</li>
                         <li>Active: ${json[index].active}</li>
-                        <li>Skills: ${json[index].skills}</li>
+                        <li>Skills: ${json[index].skills.join(", ")}</li>
                     </ul>
                     </div>
                 <img class="avatar" src=${json[index].picture}>
